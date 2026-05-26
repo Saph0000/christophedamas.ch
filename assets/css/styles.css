@@ -1,0 +1,26 @@
+@font-face {
+  font-family: aspekta; /* set name */
+  src: url(assets/fonts/AspektaVF.ttf); /* url of the font */
+}
+
+:root {
+    --color-primary: #D72323;
+    --color-secondary: #1B1717;
+    --color-background: #FFFFFF;
+
+    --font-family-primary: 'aspekta', sans-serif;
+    
+
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: var(--font-family-primary);
+    color: var(--color-secondary);
+    background-color: var(--color-background);
+}
