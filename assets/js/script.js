@@ -1,3 +1,10 @@
+document.querySelector('.nav_theme-toggle').addEventListener('click', function () {
+    var root = document.documentElement;
+    var next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+    root.setAttribute('data-theme', next);
+    localStorage.setItem('theme', next);
+});
+
 document.querySelector('.video_play-btn').addEventListener('click', function () {
     const facade = document.querySelector('.video_facade');
     const iframe = document.createElement('iframe');

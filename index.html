@@ -6,6 +6,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="/assets/css/styles.css">
+    <script>
+        (function () {
+            var saved = localStorage.getItem('theme');
+            var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            if (saved) document.documentElement.setAttribute('data-theme', saved);
+            else if (prefersDark) document.documentElement.setAttribute('data-theme', 'dark');
+        })();
+    </script>
 </head>
 
 <body>
@@ -21,7 +29,27 @@
                         <li><a href="#sponsoren">Sponsoren</a></li>
                         <li><a href="#kontakt">Kontakt</a></li>
                     </ul>
-                    <a class="button is-secondary">Sponsor werden</a>
+                    <div class="nav_actions">
+                        <button class="nav_theme-toggle" aria-label="Darkmode umschalten">
+                            <svg class="nav_theme-icon is-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" aria-hidden="true">
+                                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+                            </svg>
+                            <svg class="nav_theme-icon is-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" aria-hidden="true">
+                                <circle cx="12" cy="12" r="5" />
+                                <line x1="12" y1="1" x2="12" y2="3" />
+                                <line x1="12" y1="21" x2="12" y2="23" />
+                                <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
+                                <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
+                                <line x1="1" y1="12" x2="3" y2="12" />
+                                <line x1="21" y1="12" x2="23" y2="12" />
+                                <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
+                                <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
+                            </svg>
+                        </button>
+                        <a class="button is-secondary">Sponsor werden</a>
+                    </div>
                 </div>
             </div>
         </nav>
@@ -248,6 +276,62 @@
                         <div class="about_stat">
                             <p class="about_stat-number">2030</p>
                             <p class="about_stat-label">Das nächste grosse Ziel</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section_milestones">
+        <div class="padding-global">
+            <div class="container-xlarge">
+                <div class="padding-section-medium">
+                    <div class="milestones_component">
+                        <h2 class="milestones_heading">Jeder Meilenstein hat eine Geschichte.</h2>
+                        <div class="milestones_grid">
+                            <div class="milestones_item is-first">
+                                <h3 class="milestones_title is-first">4. Platz</h3>
+                                <p class="milestones_subtitle">Weltcup-Slalom</p>
+                                <p class="milestones_description">Persönliche Bestmarke. Erstes Top-5-Resultat im
+                                    Weltcup
+                                    – im Februar 2026.</p>
+                                <div class="milestones_image">
+                                    <img src="../assets/images/Frame 19.jpg" alt="Milestone Image" class="image">
+                                    <div class="about_card-gradient"></div>
+                                </div>
+                            </div>
+                            <div class="milestones_item is-second">
+                                <h3 class="milestones_title is-second">Paralympische Spiele 2026 </h3>
+                                <p class="milestones_subtitle">Milano Cortina</p>
+                                <p class="milestones_description">Fünf Starts. Zwei Top-15-Platzierungen. Und ein Debüt,
+                                    das er nie vergessen wird – vor Tausenden von Zuschauern, auf einer der besten
+                                    Pisten der Welt.</p>
+                                <div class="milestones_image">
+                                    <img src="../assets/images/Frame 20.jpg" alt="Milestone Image" class="image">
+                                    <div class="about_card-gradient"></div>
+                                </div>
+                            </div>
+                            <div class="milestones_item">
+                                <h3 class="milestones_title">9 FIS-Podestplätze</h3>
+                                <p class="milestones_description">In einer einzigen Saison. Konstanz auf internationalem
+                                    Niveau.</p>
+                                <div class="milestones_image">
+                                    <img src="../assets/images/Frame 21.jpg" alt="Milestone Image" class="image">
+                                    <div class="about_card-gradient"></div>
+                                </div>
+                            </div>
+                            <div class="milestones_item">
+                                <h3 class="milestones_title">Von der Anstellung zum Vollzeitprofi</h3>
+                                <p class="milestones_description">2025/26 war seine erste Saison ohne Netz. Kein Job
+                                    nebenher. Nur der Sport. Und das Resultat zeigt: Die Entscheidung war richtig.</p>
+                                <div class="milestones_image">
+                                    <img src="../assets/images/Frame 22.jpg" alt="Milestone Image" class="image">
+                                    <div class="about_card-gradient"></div>
+                                </div>
+                            </div>
+
                         </div>
                     </div>
 
