@@ -137,6 +137,18 @@ a {
     padding-bottom: var(--space-massive);
 }
 
+.padding-top-small {
+    padding-top: var(--space-small);
+}
+
+.padding-top-medium {
+    padding-top: var(--space-medium);
+}
+
+.padding-top-large {
+    padding-top: var(--space-large);
+}
+
 /* Button */
 
 .button {
@@ -272,7 +284,6 @@ a {
 
 .section_video {
     background-color: var(--color-white);
-    padding-bottom: var(--space-huge);
     display: flex;
     justify-content: center;
 }
@@ -280,7 +291,6 @@ a {
 .video_card {
     position: relative;
     width: 100%;
-    margin: -60px auto 0;
     border-radius: var(--radius-card);
     overflow: hidden;
     aspect-ratio: 5 / 3;
@@ -379,4 +389,56 @@ a {
     letter-spacing: -0.03em;
     text-transform: uppercase;
     white-space: nowrap;
+}
+
+/* Marquee Section */
+
+.section_marquee {
+    width: 100%;
+    overflow: hidden;
+    display: flex;
+    background-color: var(--color-white);
+    color: var(--color-dark);
+}
+
+.marquee_list {
+    flex: none;
+    display: flex;
+    align-items: center;
+    animation: marquee-scroll 30s linear infinite;
+}
+
+.marquee_item {
+    display: flex;
+    align-items: center;
+    gap: 1em;
+    padding: 1em 1em 1em 0;
+}
+
+.marquee_item-text {
+    white-space: nowrap;
+    font-size: 1.5em;
+    line-height: 1;
+    text-transform: uppercase;
+    letter-spacing: -0.03em;
+}
+
+.marquee_item-icon {
+    width: 1em;
+    flex-shrink: 0;
+}
+
+@keyframes marquee-scroll {
+    to {
+        transform: translateX(-50%);
+    }
+}
+
+/* Quote Section */
+
+.quote {
+    font-size: 2rem;
+    font-weight: 400;
+    line-height: 1.2;
+    text-align: center;
 }
