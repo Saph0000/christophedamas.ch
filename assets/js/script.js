@@ -5,6 +5,17 @@ window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', fun
 });
 
 
+// Initialize Lenis
+const lenis = new Lenis({
+    autoRaf: true,
+});
+
+// Listen for the scroll event and log the event data
+lenis.on('scroll', (e) => {
+    console.log(e);
+});
+
+
 // Nav Animation on scroll
 gsap.registerPlugin(ScrollTrigger);
 ScrollTrigger.create({
