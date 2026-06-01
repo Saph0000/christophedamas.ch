@@ -4,28 +4,116 @@ window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', fun
     }
 });
 
+gsap.registerPlugin(SplitText, ScrollTrigger);
 
 // Initialize Lenis
 const lenis = new Lenis({
     autoRaf: true,
 });
 
-// Listen for the scroll event and log the event data
-lenis.on('scroll', (e) => {
-    console.log(e);
+const images = gsap.utils.toArray(".preloader_image");
+const imageWrappers = gsap.utils.toArray(".preloader_image-wrapper");
+
+const heroBgWrapper = document.querySelector(".hero_background-image-wrapper");
+
+// LAST IMAGE
+const lastImage = images[images.length - 1];
+
+
+// SPLIT TEXT
+const split = SplitText.create(".preloader_text", {
+    type: "words, chars",
+    mask: "words"
 });
 
 
+// SET IMAGE STACKING
+gsap.set(images, {
+    zIndex: (i, target, arr) => arr.length - i
+});
+
+
+// TIMELINE
+const tl = gsap.timeline();
+
+
+// TEXT IN
+tl.from(split.words, {
+    yPercent: 100,
+    duration: 1,
+    ease: "power4.inOut",
+    stagger: 0.1
+});
+
+
+// IMAGE WRAPPER REVEAL
+tl.from(imageWrappers, {
+    height: 0,
+    duration: 1.2,
+    ease: "power4.inOut"
+}, "-=0.5");
+
+
+// IMAGE PEEL ANIMATION
+images.forEach((image, index) => {
+
+    // don't remove last image
+    if (index !== images.length - 1) {
+
+        tl.to(image, {
+            clipPath: "inset(0 0 100% 0)",
+            duration: 1.2,
+            ease: "power4.inOut"
+        }, "-=0.5");
+
+    }
+
+});
+
+
+
+
+// PRELOADER OUT
+tl.to(".preloader", {
+    opacity: 0,
+    duration: 0.8,
+    ease: "power2.out",
+    pointerEvents: "none"
+}, "-=0.05");
+
+
+// HERO CONTENT IN
+tl.from(".hero_title", {
+    y: 100,
+    opacity: 0,
+    stagger: 0.08,
+    duration: 1,
+    ease: "power4.out"
+}, "-=0.6");
+
+tl.from(".hero_description, .button-wrapper", {
+    y: 40,
+    opacity: 0,
+    duration: 1,
+    stagger: 0.1,
+    ease: "power3.out"
+}, "-=0.4");
+
+
 // Nav Animation on scroll
-gsap.registerPlugin(ScrollTrigger);
 ScrollTrigger.create({
-    start: 1, // triggers as soon as user scrolls down 1px
+    start: "20% 80%", // triggers as soon as user scrolls down 20% of the page and the trigger element is 80% from the top of the viewport
     onEnter: () => {
         gsap.to(".nav_background", {
             opacity: 1,
             duration: 0.3,
             ease: "power2.out",
-        });
+        }),
+            gsap.to(".nav", {
+                top: "-1rem",
+                duration: 0.3,
+                ease: "power2.out",
+            });
     },
 
     onLeaveBack: () => {
@@ -34,12 +122,17 @@ ScrollTrigger.create({
             duration: 0.3,
             ease: "power2.out",
         });
+        gsap.to(".nav", {
+            top: "0rem",
+            duration: 0.3,
+            ease: "power2.out",
+        });
     },
 });
 
 // Mobile menu toggle
-var nav = document.querySelector('.nav');
-var menuToggle = document.querySelector('.nav_menu-toggle');
+const nav = document.querySelector('.nav');
+const menuToggle = document.querySelector('.nav_menu-toggle');
 
 
 menuToggle.addEventListener('click', function () {
